@@ -6,7 +6,9 @@
     flex-direction: column;
 }
 
+
 .full-height {
+    transition: 1s;
     position:absolute;
     top:0px;
     right:0px;
@@ -19,7 +21,6 @@
     height: 100%;
     vertical-align: middle;
     flex-direction: column;
-    transition: 3s;
 }
 
 .howwasyourdaybackground{
@@ -50,4 +51,16 @@
 .fadeout{
     display: none;
     transition: 2s;
+}
+
+.happyseletiont{
+    transition: 1s;
+}
+
+.mehselectiont{
+    transition: 1s;
+}
+
+.sadselectiont{
+    transition: 1s;
 }
