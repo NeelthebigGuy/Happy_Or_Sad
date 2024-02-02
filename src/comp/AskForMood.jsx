@@ -1,14 +1,28 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion';
+
+import {changemoodset, changecordx} from './MoodPageVisibility';
 
 import "./css/askformood.css"
 
 
 export default function AskForMood() {
 
-  const [mood, setmood] = useState(0);
+  /* we need data from http://www.geoplugin.net/javascript.gp */
+
+  fetch('http://www.geoplugin.net/javascript.gp')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+  })
+  .catch(error => console.error('Error:', error));
+
+
+  /* useStates for the moods */
+  const [mood, setmood] = useState(-1);
   const [noSelectedMood, setMoodSelectPageVisiabily] = useState(true);
 
+  /* handle click function */
   function HandleClick(mood){
     setmood(mood);
 
@@ -31,8 +45,11 @@ export default function AskForMood() {
     document.getElementById("selectionpage").style.visibility = "hidden";
 
     setMoodSelectPageVisiabily(false);
+    changemoodset(mood);
+    changecordx();
   }
 
+  /* react function for neater html, returns faces and handles onclick */
   function Faces(props){
     return(
       <motion.button className='' onClick={() => HandleClick(props.moodnumber)}
@@ -62,6 +79,15 @@ export default function AskForMood() {
 
                 <div id="sadselect" className='sadselectiont'>
                   <Faces theclass="fa-regular fa-face-frown text-[100px]" moodnumber='0'/>
+                </div>
+
+                <div id="skipselect" className='skipselectiont'>
+                  <motion.button className='' onClick={() => HandleClick(-1)}
+                  whileTap={{scale: 0.9}}
+                  whileHover={{scale: 1.1}}>
+                    Dont want to answer?
+                    <hr/>
+                  </motion.button>
                 </div>
               </div>
           </div>
