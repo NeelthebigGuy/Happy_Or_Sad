@@ -46,7 +46,7 @@ export default function AskForMood() {
 
     setMoodSelectPageVisiabily(false);
     changemoodset(mood);
-    changecordx();
+    //changecordx();
   }
 
   /* react function for neater html, returns faces and handles onclick */

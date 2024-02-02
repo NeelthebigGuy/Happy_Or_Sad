@@ -11,7 +11,7 @@ export function changemoodset(moodselected){
 
 export function changecordx(cord){
     globalcordx = cord;
-    alert("" + globalcordx);
+    //alert("" + globalcordx);
 }
 
 export function changecordy(cord){
