@@ -4,6 +4,11 @@ var globalcordx = -1;
 var globalcordy = -1;
 var globalmood = -1;
 
+export var data = {
+    globalselectiontest : false,
+    globalmoodtest : -1,
+};
+
 export function changemoodset(moodselected){
     globalmood = moodselected;
     globalselection = true;

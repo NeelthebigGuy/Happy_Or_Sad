@@ -1,5 +1,6 @@
 
-import AskForMood from "./comp/AskForMood"
+import AskForMood from "./comp/AskForMood";
+import SeeResults from "./comp/SeeResults";
 
 function App() {
   
@@ -7,7 +8,6 @@ function App() {
   return (
     <>
       <AskForMood/>
-      
     </>
   )
 }

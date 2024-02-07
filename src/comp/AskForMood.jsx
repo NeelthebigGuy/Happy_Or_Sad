@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion';
 
-import {changemoodset, changecordx} from './MoodPageVisibility';
+import {changemoodset, changecordx, data} from './MoodPageVisibility';
 
 import "./css/askformood.css"
-
 
 export default function AskForMood() {
 
@@ -25,6 +24,7 @@ export default function AskForMood() {
   /* handle click function */
   function HandleClick(mood){
     setmood(mood);
+    data.globalmoodtest = 2;
 
     if(mood == 2){
       document.getElementById("happyselect").style.transition = ".1s";
