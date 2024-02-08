@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion';
 
+
+
 import {changemoodset, changecordx} from './MoodPageVisibility';
 
 import "./css/askformood.css"
@@ -10,22 +12,14 @@ import SeeResults from './SeeResults';
 
 export default function AskForMood() {
 
-  /* we need data from http://www.geoplugin.net/javascript.gp */
-
-  /*
-  fetch('http://www.geoplugin.net/javascript.gp')
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)
-  })
-  .catch(error => console.error('Error:', error));
-  */
+  /* we need data from https://www.geoplugin.net/javascript.gp */
 
   /* useStates for the moods */
   const [mood, setmood] = useState(-1);
   const [noSelectedMood, setMoodSelectPageVisiabily] = useState(true);
 
-  
+  const usercordlat = geoplugin_latitude();
+  const usercordlong = geoplugin_longitude();
 
   /* handle click function */
   function HandleClick(mood){
