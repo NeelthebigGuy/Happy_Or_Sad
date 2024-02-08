@@ -1,10 +1,12 @@
 
+import {useState, React, useEffect} from 'react';
+
 import AskForMood from "./comp/AskForMood";
 import SeeResults from "./comp/SeeResults";
 
 function App() {
   
-
+  
   return (
     <>
       <AskForMood/>
@@ -12,4 +14,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

@@ -1,30 +1,35 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion';
 
-import {changemoodset, changecordx, data} from './MoodPageVisibility';
+import {changemoodset, changecordx} from './MoodPageVisibility';
 
 import "./css/askformood.css"
+import SeeResults from './SeeResults';
+
+
 
 export default function AskForMood() {
 
   /* we need data from http://www.geoplugin.net/javascript.gp */
 
+  /*
   fetch('http://www.geoplugin.net/javascript.gp')
   .then(response => response.json())
   .then(data => {
     console.log(data)
   })
   .catch(error => console.error('Error:', error));
-
+  */
 
   /* useStates for the moods */
   const [mood, setmood] = useState(-1);
   const [noSelectedMood, setMoodSelectPageVisiabily] = useState(true);
 
+  
+
   /* handle click function */
   function HandleClick(mood){
     setmood(mood);
-    data.globalmoodtest = 2;
 
     if(mood == 2){
       document.getElementById("happyselect").style.transition = ".1s";
@@ -44,9 +49,14 @@ export default function AskForMood() {
     document.getElementById("selectionpage").style.opacity = "0";
     document.getElementById("selectionpage").style.visibility = "hidden";
 
+    document.getElementById("seeresultsdisplay").style.opacity = "1";
+    document.getElementById("seeresultsdisplay").style.height = "auto";
+    document.getElementById("seeresultsdisplay").style.zIndex = "0";
+        
+
     setMoodSelectPageVisiabily(false);
     changemoodset(mood);
-    //changecordx();
+    //changecordx(); 
   }
 
   /* react function for neater html, returns faces and handles onclick */
@@ -59,12 +69,12 @@ export default function AskForMood() {
       </motion.button>
     )
     }
-
+    
   return (
     <>
     <div id="selectionpage" className="full-height">
           <div className='conatiner'>
-              <div className='howwasyourdaybackground'>
+              <div className='howwasyourdaybackground cursor-default'>
                   <div className='howwasyourday bg-gradient-to-r from-amber-500 to-pink-500 bg-clip-text text-transparent md:text-[40px]'>How Was Your Mood Today?<div className='myline bg-gradient-to-r from-amber-500 to-pink-500 md:mt-2'/></div>
               </div>
               
@@ -92,6 +102,14 @@ export default function AskForMood() {
               </div>
           </div>
       </div>
+
+      
+
+      
+        <div id="seeresultsdisplay" className='seeglobalresultsdisplay'>
+          {noSelectedMood ? <></> : <SeeResults selection={mood} boolean={noSelectedMood}/>}
+        </div>
+      
     </>
   )
 }
